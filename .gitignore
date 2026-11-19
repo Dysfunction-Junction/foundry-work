@@ -1,0 +1,12 @@
+node_modules/
+dist/
+*.log
+
+# Never commit keys, tokens, vault data or local machine config.
+.env
+.env.*
+*.key
+keyring*.json
+facts.config.json
+/vault/
+/tmp/
