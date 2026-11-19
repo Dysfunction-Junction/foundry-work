@@ -1,0 +1,65 @@
+name: CI
+
+on: [push]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: package.json
+          package-manager-cache: false
+
+      - name: Install pinned Gitleaks
+        shell: pwsh
+        run: |
+          $version = '8.28.0'
+          if ($IsWindows) {
+            $asset = "gitleaks_${version}_windows_x64.zip"
+            $sha256 = 'da6458e8864af553807de1c46a7a8eac0880bd6b99ba56288e87e86a45af884f'
+          } else {
+            $asset = "gitleaks_${version}_linux_x64.tar.gz"
+            $sha256 = 'a65b5253807a68ac0cafa4414031fd740aeb55f54fb7e55f386acb52e6a840eb'
+          }
+
+          $toolDir = Join-Path $env:RUNNER_TEMP 'gitleaks'
+          New-Item -ItemType Directory -Path $toolDir | Out-Null
+          $archive = Join-Path $env:RUNNER_TEMP $asset
+          Invoke-WebRequest "https://github.com/gitleaks/gitleaks/releases/download/v$version/$asset" -OutFile $archive
+          if ((Get-FileHash -LiteralPath $archive).Hash -ne $sha256) {
+            throw 'Gitleaks archive checksum mismatch.'
+          }
+
+          if ($IsWindows) {
+            Expand-Archive -LiteralPath $archive -DestinationPath $toolDir
+          } else {
+            tar -xzf $archive -C $toolDir gitleaks
+            if ($LASTEXITCODE -ne 0) { throw 'Gitleaks extraction failed.' }
+          }
+          $toolDir | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+      - name: Install workspace
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Identifier scan
+        run: npm run check:identifiers
+      - name: License check
+        if: ${{ !cancelled() }}
+        run: npm run check:licenses
+      - name: Runtime dependency check
+        if: ${{ !cancelled() }}
+        run: npm run check:runtime-dependencies
+      - run: npm run typecheck
+      - run: npm run build
+      - name: Load the built JavaScript
+        run: node --input-type=module -e "await import('facts-ledger')"
