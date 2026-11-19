@@ -126,6 +126,7 @@ Not started. Needs the owner's approval before any change to the predecessor.
 | 2026-11-19 | Whole tree | Private name patterns, Markdown included | No findings |
 | 2026-11-19 | Whole tree | Machine hostname, home paths, email addresses, network addresses | No findings except the loopback address in the wizard section |
 | 2026-11-19 | All documents | Relative links, heading anchors, section numbers, package and decision ids | 19 links, 84 ids, all resolve |
+| 2026-11-19 | Whole tree after `BUILD_ASSIGNMENTS.md` was added (9 files) | Standard secret rules; private name patterns, Markdown included; hostname, home paths, email addresses, network addresses in the new file | No findings. All 33 package ids match the roadmap. |
 
 The local working repository keeps `docs/internal/`. It is private and its history is never
 published: the public repository starts from an export (section 7).
