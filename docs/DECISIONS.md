@@ -35,6 +35,7 @@ old entries except to mark them "replaced by".
 | D-16 | 2026-11-19 | Answers Q-4. Apply for free open-source code signing early. Ship unsigned with clear instructions meanwhile. Do not pay for a certificate. |
 | D-17 | 2026-11-19 | Answers Q-5. The v1 goal stays a bundle an ordinary person can install. The npm package ships earlier (V-8) for testers. |
 | D-18 | 2026-11-19 | Answers Q-6, confirms A-9. The keyring goes on write-once media only by explicit opt-in, with a warning. |
+| D-19 | 2026-11-19 | Resolves O-3 (refines D-16). Checked free open-source Windows code signing programmes: SignPath Foundation is the only $0 option (Certum Open Source and Azure Artifact Signing are paid) and requires a public repository and existing functional releases. The code-signing application waits for P-8; builds ship unsigned with published SHA-256 hashes and clear user instructions meanwhile. |
 
 D-12 to D-18 were given as one reply accepting every planner recommendation in section 3.
 
@@ -192,3 +193,4 @@ reviewer could read the predecessor's code (R-10).
 | 2026-11-18 | D-1 to D-4 recorded from the owner's goal statement and instructions. |
 | 2026-11-19 | D-5 to D-11 ratified by the owner. A-1 to A-23, Q-0 to Q-6, R-1 to R-10 written by the planner. Review record added. |
 | 2026-11-19 | D-12 to D-18 added: the owner accepted every recommendation for Q-0 to Q-6. A-1, A-9 and A-21 are now confirmed by D-13, D-18 and D-12. The final name (Q-2) stays open until P-8. |
+| 2026-11-19 | D-19 added: O-3 code-signing programme terms checked; SignPath Foundation requires a public repository and releases, so the application waits for P-8. |
