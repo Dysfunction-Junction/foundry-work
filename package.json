@@ -1,0 +1,19 @@
+{
+  "name": "foundry-workspace",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "24.22.3"
+  },
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "check:identifiers": "node scripts/check-identifiers.mjs",
+    "check:licenses": "node scripts/check-licenses.mjs",
+    "check:runtime-dependencies": "node scripts/check-runtime-dependencies.mjs"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}
