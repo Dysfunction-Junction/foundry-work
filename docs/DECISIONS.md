@@ -28,6 +28,15 @@ old entries except to mark them "replaced by".
 | D-9 | 2026-11-19 | Mode B hardware, in order of support: a USB drive with a physical write-protect switch or a USB write-blocker; optionally write-once optical media (BD-R or M-DISC) plus a printable code that records the chain head. |
 | D-10 | 2026-11-19 | The working index is encrypted with SQLCipher through `better-sqlite3-multiple-ciphers` (option A). The built-in `node:sqlite` with an operating-system disk-encryption check (option B) is allowed only as an explicit opt-in. |
 | D-11 | 2026-11-19 | Mode A, when built, is split. A1 is home network only. A2 is remote and requires Tailscale, or user-managed WireGuard or Headscale. The wizard blocks raw port-forwarding. |
+| D-12 | 2026-11-19 | Answers Q-0, confirms A-21. Foundry is a new repository under the MIT licence, extracted from a private project and not a fork of it. Public history starts with a single commit. Profiles are generic. |
+| D-13 | 2026-11-19 | Answers Q-1, confirms A-1. Step Zero is a package inside this repository. It is split out only if another project needs it without Foundry. |
+| D-14 | 2026-11-19 | Answers Q-2 in part. "Foundry" stays the working name. Name conflicts are checked on the package registry and the code host before P-8. The final name, package scope and hosting organisation are still the owner's to choose at P-8. |
+| D-15 | 2026-11-19 | Answers Q-3. The starting bar for a model is 0 unsupported claims of 50 on two consecutive runs. Revisit after the first three harness runs. |
+| D-16 | 2026-11-19 | Answers Q-4. Apply for free open-source code signing early. Ship unsigned with clear instructions meanwhile. Do not pay for a certificate. |
+| D-17 | 2026-11-19 | Answers Q-5. The v1 goal stays a bundle an ordinary person can install. The npm package ships earlier (V-8) for testers. |
+| D-18 | 2026-11-19 | Answers Q-6, confirms A-9. The keyring goes on write-once media only by explicit opt-in, with a warning. |
+
+D-12 to D-18 were given as one reply accepting every planner recommendation in section 3.
 
 ## 2. Planner assumptions
 
@@ -62,7 +71,9 @@ interface other packages build on; **high** = needs a migration of users' vaults
 
 ## 3. Open questions for the owner
 
-None of these blocks Phase 0 or Phase 1. Each names the package it blocks.
+**All seven were answered on 2026-11-19: see D-12 to D-18.** One part stays open: the final
+product name, package scope and hosting organisation (Q-2, D-14), needed at P-8. The table
+is kept as the record of what was asked.
 
 | Id | Question | Planner's recommendation | Blocks |
 |---|---|---|---|
@@ -180,3 +191,4 @@ reviewer could read the predecessor's code (R-10).
 |---|---|
 | 2026-11-18 | D-1 to D-4 recorded from the owner's goal statement and instructions. |
 | 2026-11-19 | D-5 to D-11 ratified by the owner. A-1 to A-23, Q-0 to Q-6, R-1 to R-10 written by the planner. Review record added. |
+| 2026-11-19 | D-12 to D-18 added: the owner accepted every recommendation for Q-0 to Q-6. A-1, A-9 and A-21 are now confirmed by D-13, D-18 and D-12. The final name (Q-2) stays open until P-8. |
